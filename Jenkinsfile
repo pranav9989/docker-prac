@@ -3,19 +3,20 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/pranav9989/myfirst.git'
+                git branch: 'main', url: 'https://github.com/pranav9989/docker-prac.git'
             }
         }
-
         stage('Build Docker Image') {
             steps {
-                echo "Building Docker image..."
+                dir('DockerJenkinsExperiment') {  // Ensure Docker build happens in the right folder
+                    sh 'ls -l'  // Debugging: List files to check if Dockerfile exists
+                    sh 'docker build -t my-docker-webapp .'  // Build Docker Image
+                }
             }
         }
-
         stage('Run Docker Container') {
             steps {
-                echo "Running Docker container..."
+                sh 'docker run -d -p 8081:80 my-docker-webapp'
             }
         }
     }
