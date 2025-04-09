@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8081:80 my-docker-webapp'
+                bat 'docker run -d -p 8081:80 my-docker-webapp'
             }
         }
     }
