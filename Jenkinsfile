@@ -9,8 +9,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('DockerJenkinsExperiment') {  // Ensure Docker build happens in the right folder
-                    sh 'ls -l'  // Debugging: List files to check if Dockerfile exists
-                    sh 'docker build -t my-docker-webapp .'  // Build Docker Image
+                    bat 'ls -l'  // Debugging: List files to check if Dockerfile exists
+                    bat 'docker build -t my-docker-webapp .'  // Build Docker Image
                 }
             }
         }
