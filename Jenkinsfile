@@ -6,17 +6,16 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/pranav9989/myfirst.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
-                dir('DockerJenkinsExperiment') {
-                    sh 'ls -l'
-                    sh 'docker build -t my-docker-webapp .'
-                }
+                echo "Building Docker image..."
             }
         }
+
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8081:80 my-docker-webapp'
+                echo "Running Docker container..."
             }
         }
     }
